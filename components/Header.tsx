@@ -11,29 +11,111 @@ export default function Header() {
   const [open, setOpen] = useState(false)
   const [skelevisiblity, setSkelevisiblity] = useState(false)
   const videoRef = useRef<HTMLVideoElement | null>(null)
+  const canvasRef = useRef<HTMLCanvasElement | null>(null)
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  useEffect(() => {
+    let rafId = 0
+    let running = true
+
+    const process = () => {
+      const video = videoRef.current
+      const canvas = canvasRef.current
+      if (!running) return
+      if (!video || !canvas) {
+        rafId = requestAnimationFrame(process)
+        return
+      }
+
+      const ctx = canvas.getContext('2d')
+      if (!ctx) {
+        rafId = requestAnimationFrame(process)
+        return
+      }
+
+      const vw = video.videoWidth || 640
+      const vh = video.videoHeight || 360
+      if (canvas.width !== vw || canvas.height !== vh) {
+        canvas.width = vw
+        canvas.height = vh
+      }
+
+      try {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
+      } catch (e) {
+        // video not ready
+        rafId = requestAnimationFrame(process)
+        return
+      }
+
+      const img = ctx.getImageData(0, 0, canvas.width, canvas.height)
+      const data = img.data
+
+      // simple chroma key: remove bright green pixels
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i]
+        const g = data[i + 1]
+        const b = data[i + 2]
+
+        // heuristics: green significantly higher than red/blue and above threshold
+        if (g > 100 && g > r * 1.15 && g > b * 1.15) {
+          data[i + 3] = 0 // make pixel transparent
+        }
+      }
+
+      ctx.putImageData(img, 0, 0)
+      rafId = requestAnimationFrame(process)
+    }
+
+    if (skelevisiblity) {
+      // ensure video plays
+      videoRef.current?.play().catch(() => {})
+      rafId = requestAnimationFrame(process)
+    }
+
+    return () => {
+      running = false
+      cancelAnimationFrame(rafId)
+      try {
+        if (videoRef.current) {
+          videoRef.current.pause()
+          videoRef.current.currentTime = 0
+        }
+      } catch (e) {
+        // ignore
+      }
+    }
+  }, [skelevisiblity])
   
   return (
     <>
     {skelevisiblity && (
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+        className="fixed inset-0 z-50 flex items-center justify-center"
         onClick={() => setSkelevisiblity(false)}
         role="dialog"
         aria-modal="true"
       >
+        {/* backdrop */}
+        <div className="absolute inset-0 bg-black/50" />
+
         <div className="relative w-full h-full md:w-[80%] md:h-[80%] max-w-4xl" onClick={(e) => e.stopPropagation()}>
+          {/* hidden native video used as source for chroma-key processing */}
           <video
             ref={videoRef}
             src="/stock-footage-skeleton-doing-silly-goofy-dance-on-green-screen-background-comical-spooky-character-with.webm"
             autoPlay
             muted
-            controls
-            className="w-full h-full object-contain rounded-lg bg-black"
+            playsInline
+            className="hidden"
             onEnded={() => setSkelevisiblity(false)}
           />
+
+          {/* canvas where chroma-keyed frames are drawn */}
+          <canvas ref={canvasRef} className="w-full h-full rounded-lg" />
+
           <button
             onClick={() => setSkelevisiblity(false)}
             className="absolute top-2 right-2 bg-white/90 dark:bg-slate-800/90 text-slate-900 dark:text-white rounded-full p-2 shadow"
