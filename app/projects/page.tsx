@@ -1,7 +1,7 @@
 // src/app/projects/page.tsx
 "use client"
 
-import { useState } from 'react'
+import { JSX, useState } from 'react'
 import ListaProjektow from '@/components/ListaProjektow'
 import Franek2 from '@/components/projekty/Franek2'
 import Bioreaktor from '@/components/projekty/Bioreaktor'
