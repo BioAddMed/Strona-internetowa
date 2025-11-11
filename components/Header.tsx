@@ -101,7 +101,7 @@ export default function Header() {
         {/* backdrop */}
         <div className="absolute inset-0 bg-black/50" />
 
-        <div className="relative w-full h-full md:w-[80%] md:h-[80%] max-w-4xl" onClick={(e) => e.stopPropagation()}>
+        <div className="relative w-full h-full md:h-[80%] max-w-4xl" onClick={(e) => e.stopPropagation()}>
           {/* hidden native video used as source for chroma-key processing */}
           <video
             ref={videoRef}
