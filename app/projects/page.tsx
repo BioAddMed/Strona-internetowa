@@ -10,6 +10,7 @@ import Franek from '@/components/projekty/Franek'
 import Bioploter from '@/components/projekty/Bioploter'
 import Edugut from '@/components/projekty/Edugut'
 import Kampus3D from '@/components/projekty/Kampus3D'
+import Aeros from '@/components/projekty/Aeros'
 
 const PROJECT_NAMES = [
   'Franek 2.0',
@@ -18,7 +19,8 @@ const PROJECT_NAMES = [
   'Franek',
   'Bioploter',
   'Edugut',
-  'Kampus 3D'
+  'Kampus 3D',
+  'Aeros'
 ]
 
 export default function ProjectsPage() {
@@ -31,7 +33,8 @@ export default function ProjectsPage() {
     'Franek': <Franek />,
     'Bioploter': <Bioploter />,
     'Edugut': <Edugut />,
-    'Kampus 3D': <Kampus3D />
+    'Kampus 3D': <Kampus3D />,
+    'Aeros': <Aeros />
   }
 
   return (
@@ -48,7 +51,7 @@ export default function ProjectsPage() {
           onSelect={setSelectedProject}
         />
 
-        <div className="flex-1 min-h-[420px] rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br from-white via-brand-50 to-accent-50 dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-900 p-6 overflow-auto">
+        <div className="flex-1 min-h-[420px] rounded-2xl border border-slate-200 dark:border-slate-700 bg-linear-to-br from-white via-brand-50 to-accent-50 dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-900 p-6 overflow-auto">
           {componentByName[selectedProject]}
         </div>
       </div>

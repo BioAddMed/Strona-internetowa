@@ -1,11 +1,42 @@
 
 
-export default function Edugut() {
+"use client"
+import { useEffect, useState } from 'react'
+import ImageCarousel from '@/components/ImageCarousel'
+
+type Props = {
+  folder?: string // relative to public/, e.g. 'projekty/Edugut'
+}
+
+export default function Edugut({ folder = 'projekty/Edugut' }: Props) {
+    const [images, setImages] = useState<string[]>([])
+    useEffect(() => {
+        let mounted = true
+        fetch(`/api/images?folder=${encodeURIComponent(folder)}`)
+            .then((r) => r.json())
+            .then((data) => {
+                if (!mounted) return
+                setImages(data.images || [])
+            })
+            .catch(() => {
+                if (!mounted) return
+                setImages([])
+            })
+        return () => { mounted = false }
+    }, [folder])
+
     return (
         <div className="flex flex-col space-y-4">
             <h2 className="text-xl font-bold flex-1">Edugut</h2>
             <div className="grid">
-                <img src="https://placehold.co/200x200" alt="Placeholder" className="rounded-lg m-10 mx-auto" />
+                {images.length > 0 ? (
+                    <div className="p-4">
+                        <ImageCarousel images={images} />
+                    </div>
+                ) : (
+                    <img src="/projekty/Edugut/20250915_103127.jpg" alt="Placeholder" className="rounded-lg m-10 mx-auto h-80 object-contain" />
+                )}
+
                 <p>
                     Projekt „Edugut” jest realizowany we współpracy z KN „NEXUM” na Wydziale Medycznym. Celem projektu jest zaprojektowanie i wykonanie modelu treningowego do zespolenia jelita cienkiego, który jak najlepiej odzwierciedla budowę anatomiczną jelita grubego oraz jego właściwości mechaniczne. Kluczowym aspektem jest wydajność i opłacalność techniki wykonania, dlatego w procesie tym wykorzystujemy druk 3D.
                 </p>

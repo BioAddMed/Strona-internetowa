@@ -173,10 +173,8 @@ export default function Header() {
         <div className="md:hidden border-t border-slate-200 dark:border-slate-700">
           <div className="container mx-auto px-6 py-3 flex flex-col gap-3 text-slate-700 dark:text-slate-200">
             <Link onClick={() => setOpen(false)} href="/" className="py-1">Strona główna</Link>
-            <Link onClick={() => setOpen(false)} href="/news" className="py-1">Aktualności</Link>
             <Link onClick={() => setOpen(false)} href="/projects" className="py-1">Projekty</Link>
             <Link onClick={() => setOpen(false)} href="/departments" className="py-1">Działy</Link>
-            <Link onClick={() => setOpen(false)} href="/team" className="py-1">Zespół</Link>
             <Link onClick={() => setOpen(false)} href="/management" className="py-1">Zarząd</Link>
             <Link onClick={() => setOpen(false)} href="/contact" className="py-1">Kontakt</Link>
           </div>

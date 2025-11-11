@@ -23,20 +23,20 @@ export default function Footer() {
         <div>
           <h4 className="font-medium text-slate-900 dark:text-white">Szybkie linki</h4>
           <ul className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-400">
-            <li><a href="#projects" className="hover:underline hover:text-accent-500 transition-colors">Projekty</a></li>
-            <li><a href="#departments" className="hover:underline hover:text-accent-500 transition-colors">Działy</a></li>
-            <li><a href="#team" className="hover:underline hover:text-accent-500 transition-colors">Zespół</a></li>
+            <li><a href="/projects" className="hover:underline hover:text-accent-500 transition-colors">Projekty</a></li>
+            <li><a href="/departments" className="hover:underline hover:text-accent-500 transition-colors">Działy</a></li>
+            <li><a href="/management" className="hover:underline hover:text-accent-500 transition-colors">Zespół</a></li>
           </ul>
         </div>
 
         <div>
           <h4 className="font-medium text-slate-900 dark:text-white">Kontakt</h4>
-          <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">@bioaddmed</p>
+          <a href="mailto:bioaddmed@gmail.com" className="mt-3 text-sm text-slate-600 dark:text-slate-400">@bioaddmed</a>
           <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">kontakt@bioaddmed.example</p>
         </div>
       </div>
 
-      <div className="border-t dark:border-slate-700 py-4 text-center text-xs text-slate-400 dark:text-slate-500">© {new Date().getFullYear()} KN BioAddMed</div>
+      <div className="border-t dark:border-slate-700 py-4 text-center text-xs text-slate-400 dark:text-slate-500">© {new Date().getFullYear()} KN BioAddMed Wszystkie prawa zastrzeżone.</div>
     </footer>
   )
 }
