@@ -3,23 +3,57 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useTheme } from '@/app/context/ThemeContext'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export default function Header() {
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [open, setOpen] = useState(false)
-
+  const [skelevisiblity, setSkelevisiblity] = useState(false)
+  const videoRef = useRef<HTMLVideoElement | null>(null)
   useEffect(() => {
     setMounted(true)
   }, [])
   
   return (
+    <>
+    {skelevisiblity && (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+        onClick={() => setSkelevisiblity(false)}
+        role="dialog"
+        aria-modal="true"
+      >
+        <div className="relative w-full h-full md:w-[80%] md:h-[80%] max-w-4xl" onClick={(e) => e.stopPropagation()}>
+          <video
+            ref={videoRef}
+            src="/stock-footage-skeleton-doing-silly-goofy-dance-on-green-screen-background-comical-spooky-character-with.webm"
+            autoPlay
+            muted
+            controls
+            className="w-full h-full object-contain rounded-lg bg-black"
+            onEnded={() => setSkelevisiblity(false)}
+          />
+          <button
+            onClick={() => setSkelevisiblity(false)}
+            className="absolute top-2 right-2 bg-white/90 dark:bg-slate-800/90 text-slate-900 dark:text-white rounded-full p-2 shadow"
+            aria-label="Close video"
+          >
+            ✕
+          </button>
+        </div>
+      </div>
+    )}
     <header className="bg-white dark:bg-slate-800 border-b dark:border-slate-700 sticky top-0 z-40 transition-colors">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
       <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}>
-        <Link href="/" className="flex items-center gap-3">
-        <div className="overflow-hidden h-12 bg-brand-500 dark:bg-brand-600 flex items-center justify-center text-white font-bold text-xl rounded transition-colors">
+        <div className="flex items-center gap-3">
+        <div
+          className="overflow-hidden h-12 bg-brand-500 dark:bg-brand-600 flex items-center justify-center text-white font-bold text-xl rounded transition-colors cursor-pointer"
+          onClick={() => setSkelevisiblity(true)}
+          role="button"
+          aria-label="Play intro video"
+        >
           {mounted ? (
             resolvedTheme === 'light' ? (
               <img src="/logo.png" alt="KN BioAddMed logo" className="w-full h-full object-contain" loading="lazy" />
@@ -30,7 +64,7 @@ export default function Header() {
             <div className="w-full h-full" />
           )}
         </div>
-        </Link>
+        </div>
       </motion.div>
 
       <nav className="hidden md:flex text-sm text-slate-700 dark:text-slate-200 gap-10">
@@ -39,7 +73,6 @@ export default function Header() {
         <Link href="/departments" className="hover:text-accent-500 transition-colors text-lg">Działy</Link>
         <Link href="/management" className="hover:text-accent-500 transition-colors text-lg">Zarząd</Link>
         <Link href="/contact" className="hover:text-accent-500 transition-colors text-lg">Kontakt</Link>
-        <Link href="/news" className="hover:text-accent-500 transition-colors text-lg">Aktualności</Link>
       </nav>
 
       <button
@@ -68,5 +101,6 @@ export default function Header() {
         </div>
       )}
     </header>
+   </>
   )
 }
