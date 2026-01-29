@@ -26,13 +26,13 @@ export default function Footer() {
             <li><a href="/projects" className="hover:underline hover:text-accent-500 transition-colors">Projekty</a></li>
             <li><a href="/departments" className="hover:underline hover:text-accent-500 transition-colors">Działy</a></li>
             <li><a href="/management" className="hover:underline hover:text-accent-500 transition-colors">Zespół</a></li>
+            <li><a href="/sponsors" className="hover:underline hover:text-accent-500 transition-colors">Sponsorzy</a></li>
           </ul>
         </div>
 
         <div>
           <h4 className="font-medium text-slate-900 dark:text-white">Kontakt</h4>
-          <a href="mailto:bioaddmed@gmail.com" className="mt-3 text-sm text-slate-600 dark:text-slate-400">@bioaddmed</a>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">kontakt@bioaddmed.example</p>
+          <a href="mailto:bioaddmed@gmail.com" className="mt-3 text-sm text-slate-600 dark:text-slate-400">bioaddmed@gmail.com</a>
         </div>
       </div>
 

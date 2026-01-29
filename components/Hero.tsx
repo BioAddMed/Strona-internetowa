@@ -31,7 +31,7 @@ export default function Hero() {
       </div>
 
       <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="relative rounded-xl overflow-hidden shadow-lg bg-linear-to-br from-brand-100 to-brand-50 dark:from-brand-900 dark:to-brand-800 aspect-3/2 flex items-center justify-center">
-        <div className="text-6xl font-bold text-brand-500 dark:text-brand-300 opacity-20">BioAddMed</div>
+        <img src="/images/bioaddmed_team.jpg" alt="Zespół KN BioAddMed" className="object-cover w-full h-full" />
       </motion.div>
     </section>
   )
