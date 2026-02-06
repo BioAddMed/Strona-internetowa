@@ -23,9 +23,8 @@ export default function Hero() {
         </div>
 
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          <Stat label="Członków" value="50" />
-          <Stat label="Projekty" value="7" />
-          <Stat label="Warsztaty" value="12" />
+          <Stat label="Członków" value="49" />
+          <Stat label="Projekty" value="9" />
           <Stat label="Współprace" value="8" />
         </div>
       </div>

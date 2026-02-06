@@ -22,7 +22,7 @@ export default function Sponsors() {
           <div className="space-y-3">
             {sponsor.website && sponsor.website.length > 0 && (
               <div className="flex items-start gap-3">
-                <Globe className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
+                <Globe className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
                 <div className="flex flex-col gap-1">
                   {sponsor.website.map((url, idx) => (
                     <a
@@ -41,7 +41,7 @@ export default function Sponsors() {
 
             {sponsor.email && (
               <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0" />
+                <Mail className="w-5 h-5 text-red-600 dark:text-red-400 shrink-0" />
                 <div className="flex flex-col gap-1">
                   {sponsor.email.split('/').map((email, idx) => (
                     <a
