@@ -6,18 +6,18 @@ export const NEWS_ITEMS = [
 ]
 
 export const PROJECTS = [
-  { title: 'Franek 2.0', tag: 'AI / Hardware', excerpt: 'Interaktywny model czaszki z oczami śledzącymi twarz — ML + Raspberry Pi.' },
-  { title: 'Orteza', tag: 'Biomechanics', excerpt: 'Orteza stabilizująca kończynę górną — prototypy i testy biomechaniczne.' },
-  { title: 'Robołapa', tag: 'Robotics', excerpt: 'Drukowana dłoń sterowana sygnałem EMG.' },
-  { title: 'EduGut', tag: 'Medical Trainer', excerpt: 'Trenażer chirurgiczny do zespolenia jelita — druk 3D.' },
-  { title: 'AERO', tag: 'Wearables', excerpt: 'System monitorowania oddechu z biofeedbackiem.' },
-  { title: 'Wege Druk', tag: 'FoodTech', excerpt: 'Badania nad strukturą produktów z białek roślinnych.' }
+  { title: 'Franek 2.0', tag: 'AI / Hardware', excerpt: 'Interaktywny model czaszki z oczami śledzącymi twarz — ML + Raspberry Pi.', coordinator: 'Jakub Gruszka', status: 'ongoing' },
+  { title: 'Orteza', tag: 'Biomechanics', excerpt: 'Orteza stabilizująca kończynę górną — prototypy i testy biomechaniczne.', coordinator: 'Hubert Sowa', status: 'ongoing' },
+  { title: 'Robołapa', tag: 'Robotics', excerpt: 'Drukowana dłoń sterowana sygnałem EMG.', coordinator: 'Gabriel Pankowski', status: 'finished' },
+  { title: 'EduGut', tag: 'Medical Trainer', excerpt: 'Trenażer chirurgiczny do zespolenia jelita — druk 3D.', coordinator: 'Kamila Saferna', status: 'ongoing' },
+  { title: 'AERO', tag: 'Wearables', excerpt: 'System monitorowania oddechu z biofeedbackiem.', coordinator: 'Mateusz Witkowski', status: 'ongoing' },
+  { title: 'Wege Druk', tag: 'FoodTech', excerpt: 'Badania nad strukturą produktów z białek roślinnych.', coordinator: 'TBD', status: 'finished' }
 ]
 
 export const DEPARTMENTS = [
-  { name: 'Dział Promocji', desc: 'Komunikacja, social media, współprace.' },
-  { name: 'Dział IT', desc: 'Elektronika, software, ML, integracje.' },
-  { name: 'Dział Modelowania', desc: 'Projektowanie CAD, druk 3D i post-processing.' }
+  { name: 'Dział Promocji', desc: 'Komunikacja, social media, współprace.', coordinator: 'Mateusz Witkowski' },
+  { name: 'Dział IT', desc: 'Elektronika, software, ML, integracje.', coordinator: 'Jakub Gruszka' },
+  { name: 'Dział Modelowania', desc: 'Projektowanie CAD, druk 3D i post-processing.', coordinator: 'TBD' }
 ]
 
 export const SPONSORS = [

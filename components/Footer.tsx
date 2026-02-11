@@ -26,7 +26,7 @@ export default function Footer() {
             <li><a href="/projects" className="hover:underline hover:text-accent-500 transition-colors">Projekty</a></li>
             <li><a href="/departments" className="hover:underline hover:text-accent-500 transition-colors">Działy</a></li>
             <li><a href="/management" className="hover:underline hover:text-accent-500 transition-colors">Zespół</a></li>
-            <li><a href="/sponsors" className="hover:underline hover:text-accent-500 transition-colors">Sponsorzy</a></li>
+            <li><a href="/partners" className="hover:underline hover:text-accent-500 transition-colors">Partnerzy</a></li>
           </ul>
         </div>
 

@@ -1,7 +1,7 @@
 // src/app/projects/page.tsx
 "use client"
 
-import { JSX, useState } from 'react'
+import { JSX, useState, useMemo } from 'react'
 import ListaProjektow from '@/components/ListaProjektow'
 import Franek2 from '@/components/projekty/Franek2'
 import Bioreaktor from '@/components/projekty/Bioreaktor'
@@ -12,19 +12,29 @@ import Edugut from '@/components/projekty/Edugut'
 import Kampus3D from '@/components/projekty/Kampus3D'
 import Aeros from '@/components/projekty/Aeros'
 
-const PROJECT_NAMES = [
-  'Franek 2.0',
-  'Bioreaktor',
-  'Orteza',
-  'Franek',
-  'Bioploter',
-  'Edugut',
-  'Kampus 3D',
-  'Aeros'
+const PROJECT_DATA = [
+  { name: 'Franek 2.0', status: 'ongoing' },
+  { name: 'Bioreaktor', status: 'ongoing' },
+  { name: 'Orteza', status: 'ongoing' },
+  { name: 'Edugut', status: 'ongoing' },
+  { name: 'Aeros', status: 'ongoing' },
+  { name: 'Franek', status: 'finished' },
+  { name: 'Bioploter', status: 'finished' },
+  { name: 'Kampus 3D', status: 'finished' }
 ]
 
 export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState<string>('Franek 2.0')
+
+  const projectGroups = useMemo(() => {
+    const ongoing = PROJECT_DATA.filter(p => p.status === 'ongoing').map(p => p.name)
+    const finished = PROJECT_DATA.filter(p => p.status === 'finished').map(p => p.name)
+    
+    return [
+      { title: 'Projekty trwające', items: ongoing },
+      { title: 'Projekty skończone', items: finished }
+    ]
+  }, [])
 
   const componentByName: Record<string, JSX.Element> = {
     'Franek 2.0': <Franek2 />,
@@ -46,7 +56,7 @@ export default function ProjectsPage() {
 
       <div className="flex flex-col md:flex-row gap-6">
         <ListaProjektow
-          items={PROJECT_NAMES}
+          groups={projectGroups}
           selectedProject={selectedProject}
           onSelect={setSelectedProject}
         />
