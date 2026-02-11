@@ -99,7 +99,7 @@ export const HERO: HeroContent = {
     href: '/contact'
   },
   heroImage: {
-    src: '/images/bioaddmed_team.jpg',
+    src: '/images/team/bioaddmed.jpg',
     alt: 'Zespół KN BioAddMed'
   },
   stats: {
