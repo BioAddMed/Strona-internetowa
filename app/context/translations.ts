@@ -20,7 +20,12 @@ export const translations = {
       stats: {
         members: '49',
         projects: '9',
-        partnerships: '8'
+        partnerships: '8',
+        labels: {
+          members: 'Członków',
+          projects: 'Projekty',
+          partnerships: 'Współprace'
+        }
       }
     },
     
@@ -63,6 +68,7 @@ export const translations = {
     projects: {
       title: 'Nasze Projekty',
       subtitle: 'Od prototypów po wdrożenia — innowacyjne rozwiązania medyczne.',
+      description: 'Wybierz projekt z listy po lewej, aby zobaczyć szczegóły.',
       allProjects: 'Wszystkie',
       ongoing: 'Trwające',
       finished: 'Zakończone',
@@ -93,6 +99,7 @@ export const translations = {
     partners: {
       title: 'Nasi Partnerzy',
       subtitle: 'Firmy i instytucje wspierające nasze projekty.',
+      becomeSponsorsButton: 'Zostań sponsorem',
       website: 'Strona internetowa',
       contact: 'Kontakt',
       sponsorOffer: {
@@ -139,7 +146,12 @@ export const translations = {
       stats: {
         members: '49',
         projects: '9',
-        partnerships: '8'
+        partnerships: '8',
+        labels: {
+          members: 'Members',
+          projects: 'Projects',
+          partnerships: 'Partnerships'
+        }
       }
     },
     
@@ -182,6 +194,7 @@ export const translations = {
     projects: {
       title: 'Our Projects',
       subtitle: 'From prototypes to deployments — innovative medical solutions.',
+      description: 'Select a project from the list on the left to see details.',
       allProjects: 'All',
       ongoing: 'Ongoing',
       finished: 'Finished',
@@ -212,6 +225,7 @@ export const translations = {
     partners: {
       title: 'Our Partners',
       subtitle: 'Companies and institutions supporting our projects.',
+      becomeSponsorsButton: 'Become a sponsor',
       website: 'Website',
       contact: 'Contact',
       sponsorOffer: {

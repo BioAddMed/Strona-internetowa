@@ -29,9 +29,9 @@ export default function Hero() {
         </div>
 
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
-          <Stat label={language === 'pl' ? 'Członków' : 'Members'} value={t.hero.stats.members} />
-          <Stat label={language === 'pl' ? 'Projekty' : 'Projects'} value={t.hero.stats.projects} />
-          <Stat label={language === 'pl' ? 'Współprace' : 'Partnerships'} value={t.hero.stats.partnerships} />
+          <Stat label={t.hero.stats.labels.members} value={t.hero.stats.members} />
+          <Stat label={t.hero.stats.labels.projects} value={t.hero.stats.projects} />
+          <Stat label={t.hero.stats.labels.partnerships} value={t.hero.stats.partnerships} />
         </div>
       </div>
 

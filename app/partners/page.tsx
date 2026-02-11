@@ -22,7 +22,7 @@ export default function SponsorsPage() {
             href="/sponsor-offer"
             className="inline-flex items-center rounded-full bg-brand-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-brand-600/30 ring-2 ring-brand-300/60 transition-all hover:bg-brand-700 hover:shadow-xl hover:shadow-brand-600/40 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-300"
           >
-            {language === 'pl' ? 'Zostań sponsorem' : 'Become a sponsor'}
+            {t.partners.becomeSponsorsButton}
           </Link>
         </div>
       </header>

@@ -56,9 +56,7 @@ export default function ProjectsPage() {
       <header className="text-center space-y-2">
         <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">{t.projects.title}</h1>
         <p className="text-slate-600 dark:text-slate-300">
-          {language === 'pl' 
-            ? 'Wybierz projekt z listy po lewej, aby zobaczyć szczegóły.' 
-            : 'Select a project from the list on the left to see details.'}
+          {t.projects.description}
         </p>
       </header>
 
