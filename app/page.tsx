@@ -17,7 +17,7 @@ export default function Home() {
         </div>
         <NewsGrid limit={3} />
       </section>
-      <CTA />
+      {/* <CTA /> */}
     </div>
   )
 }

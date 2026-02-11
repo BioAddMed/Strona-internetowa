@@ -155,7 +155,7 @@ export default function Header() {
         <Link href="/departments" className="hover:text-accent-500 transition-colors text-lg">Działy</Link>
         <Link href="/management" className="hover:text-accent-500 transition-colors text-lg">Zarząd</Link>
         <Link href="/contact" className="hover:text-accent-500 transition-colors text-lg">Kontakt</Link>
-        <Link href="/sponsors" className="hover:text-accent-500 transition-colors text-lg">Sponsorzy</Link>
+        <Link href="/partners" className="hover:text-accent-500 transition-colors text-lg">Partnerzy</Link>
       </nav>
 
       <button
@@ -178,7 +178,7 @@ export default function Header() {
             <Link onClick={() => setOpen(false)} href="/departments" className="py-1">Działy</Link>
             <Link onClick={() => setOpen(false)} href="/management" className="py-1">Zarząd</Link>
             <Link onClick={() => setOpen(false)} href="/contact" className="py-1">Kontakt</Link>
-            <Link onClick={() => setOpen(false)} href="/sponsors" className="py-1">Sponsorzy</Link>
+            <Link onClick={() => setOpen(false)} href="/partners" className="py-1">Partnerzy</Link>
           </div>
         </div>
       )}
