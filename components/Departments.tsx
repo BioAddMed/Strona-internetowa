@@ -18,6 +18,11 @@ export default function Departments({ limit }: { limit?: number }) {
         >
           <h4 className="font-semibold text-slate-900 dark:text-white">{d.name}</h4>
           <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{d.desc}</p>
+          {d.coordinator && (
+            <p className="mt-3 text-sm font-medium text-slate-700 dark:text-slate-200">
+              Koordynator: {d.coordinator}
+            </p>
+          )}
         </div>
       ))}
     </div>
