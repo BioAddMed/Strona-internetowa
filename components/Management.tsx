@@ -25,8 +25,6 @@ export default function Management() {
   return (
     <div className="space-y-8">
       <section aria-labelledby="board-title">
-        <h2 id="board-title" className="text-xl font-semibold text-slate-900 dark:text-white mb-6 text-center">Zarząd</h2>
-        
         {/* Pyramid layout */}
         <div className="flex flex-col items-center gap-6">
           {/* President at top */}
