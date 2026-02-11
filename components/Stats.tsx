@@ -1,10 +1,5 @@
 // src/components/Stats.tsx
-const STATS = [
-  { value: '50', label: 'Członków koła', helper: 'Aktywni w kilku działach' },
-  { value: '7', label: 'Aktywnych projektów', helper: 'Od prototypów po wdrożenia' },
-  { value: '12', label: 'Warsztatów rocznie', helper: 'Druk 3D, elektronika, medtech' },
-  { value: '8', label: 'Partnerów', helper: 'Firmy i instytucje wspierające' }
-]
+import { STATS } from '@/app/context/data'
 
 const LIGHT_BACKGROUNDS = [
   'from-accent-50 via-white to-brand-50',

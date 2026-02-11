@@ -1,12 +1,5 @@
 // src/components/Team.tsx
-const TEAM = [
-  { name: 'Filip Fedoniuk', role: 'Zarząd' },
-  { name: 'Gabriel Pankowski', role: 'Zarząd' },
-  { name: 'Kamila Saferna', role: 'Zarząd' },
-  { name: 'Dominika Porzybót', role: 'Koordynator Finansów' },
-  { name: 'Mateusz Witkowski', role: 'Koordynator Promocji' },
-  { name: 'Michał Szymczak', role: 'Koordynator IT' }
-]
+import { TEAM } from '@/app/context/data'
 
 export default function Team() {
   return (
