@@ -1,16 +1,5 @@
 // src/components/Management.tsx
-type Member = { name: string; role: string; imageUrl?: string }
-
-const MANAGEMENT: Member[] = [
-  { name: 'Kamila Saferna', role: 'Przewodniczący', imageUrl: '/images/management/kamila_saferna.jpeg' },
-  { name: 'Gabriel Pankowski', role: 'Wiceprzewodniczący', imageUrl: '/images/management/gabriel_pankowski.jpg' },
-  { name: 'Hubert Sowa', role: 'Wiceprzewodniczący', imageUrl: '/images/management/hubert_sowa.jpg' }
-]
-
-const COORDINATORS: Member[] = [
-  { name: 'Mateusz Witkowski', role: 'Koordynator Działu Promocji' },
-  { name: 'Jakub Gruszka', role: 'Koordynator Działu IT' }
-]
+import { MANAGEMENT, COORDINATORS, type Member } from '@/app/context/data'
 
 function Card({ name, role, imageUrl }: Member) {
   return (
