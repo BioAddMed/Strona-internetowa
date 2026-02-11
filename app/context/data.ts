@@ -231,7 +231,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     id: 'bioploter',
     title: 'Bioploter',
     coordinator: 'Kamila Saferna',
-    description: 'Celem projektu Bioplaster/druk tkanek jest analizowanie dostępnych biomaterialow, znalezienie i wdrożenie innowacyjnych aplikacji technologii przyrostowych (w tym zbudowanie bioplotera) do produkcji funkcjonalnych tkanek t.j. wypełnienia kostne czy włókna mięśniowe. Aktualnie we współpracy z KN Rapid Troopers pod opieką Pani Profesor Ziółkowskiej-Szymczyk oraz Dr. Wallisa analizujemy dostępną literaturę naukową dotyczącą używanych biomateriałów i urządzeń, poszukując problemów, które obecnie naukowcy napotykają w drodze do osiągnięcia w/w celu i próbujemy znaleźć ich rozwiązania.',
+    description: 'Celem projektu Bioplaster/druk tkanek jest analizowanie dostępnych biomateriałów, znalezienie i wdrożenie innowacyjnych aplikacji technologii przyrostowych (w tym zbudowanie bioplotera) do produkcji funkcjonalnych tkanek t.j. wypełnienia kostne czy włókna mięśniowe. Aktualnie we współpracy z KN Rapid Troopers pod opieką Pani Profesor Ziółkowskiej-Szymczyk oraz Dr. Wallisa analizujemy dostępną literaturę naukową dotyczącą używanych biomateriałów i urządzeń, poszukując problemów, które obecnie naukowcy napotykają w drodze do osiągnięcia w/w celu i próbujemy znaleźć ich rozwiązania.',
     imageFolder: 'projekty/Bioploter'
   },
   {
