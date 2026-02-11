@@ -32,6 +32,9 @@ export default function Aeros({ folder = 'projekty/Aeros' }: Props) {
     return (
         <div className="flex flex-col space-y-4">
             <h2 className="text-xl font-bold">Aeros — Inteligentny system oddechowy</h2>
+            <p className="text-sm text-slate-600 dark:text-slate-300">
+                <span className="font-medium">Koordynator:</span> Mateusz Witkowski
+            </p>
 
             <div className="grid">
                 {images.length > 0 ? (
