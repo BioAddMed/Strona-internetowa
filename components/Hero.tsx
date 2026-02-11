@@ -2,36 +2,41 @@
 // src/components/Hero.tsx
 import { motion } from 'framer-motion'
 import { HERO } from '@/app/context/data'
+import { useLanguage } from '@/app/context/LanguageContext'
+import { translations } from '@/app/context/translations'
 
 export default function Hero() {
+  const { language } = useLanguage()
+  const t = translations[language]
+  
   return (
     <section className="grid gap-8 md:grid-cols-2 items-center">
       <div>
         <motion.h1 initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.05 }} className="text-4xl md:text-5xl font-extrabold leading-tight text-slate-900 dark:text-white">
-          {HERO.title}
+          {t.hero.title}
         </motion.h1>
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.12 }} className="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-prose">
-          {HERO.subtitle}
+          {t.hero.subtitle}
         </motion.p>
 
         <div className="mt-6 flex gap-3">
-          <a href={HERO.primaryCta.href} className="inline-flex items-center gap-2 px-5 py-3 rounded border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-            {HERO.primaryCta.text}
+          <a href="/projects" className="inline-flex items-center gap-2 px-5 py-3 rounded border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+            {t.hero.primaryCta}
           </a>
-          <a href={HERO.secondaryCta.href} className="inline-flex items-center gap-2 px-5 py-3 rounded border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-            {HERO.secondaryCta.text}
+          <a href="/contact" className="inline-flex items-center gap-2 px-5 py-3 rounded border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+            {t.hero.secondaryCta}
           </a>
         </div>
 
-        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          <Stat label="Członków" value={HERO.stats.members} />
-          <Stat label="Projekty" value={HERO.stats.projects} />
-          <Stat label="Współprace" value={HERO.stats.partnerships} />
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+          <Stat label={language === 'pl' ? 'Członków' : 'Members'} value={t.hero.stats.members} />
+          <Stat label={language === 'pl' ? 'Projekty' : 'Projects'} value={t.hero.stats.projects} />
+          <Stat label={language === 'pl' ? 'Współprace' : 'Partnerships'} value={t.hero.stats.partnerships} />
         </div>
       </div>
 
       <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="relative rounded-xl overflow-hidden shadow-lg bg-linear-to-br from-brand-100 to-brand-50 dark:from-brand-900 dark:to-brand-800 aspect-3/2 flex items-center justify-center">
-        <img src={HERO.heroImage.src} alt={HERO.heroImage.alt} className="object-cover w-full h-full" />
+        <img src={HERO.heroImage.src} alt={t.hero.imageAlt} className="object-cover w-full h-full" />
       </motion.div>
     </section>
   )
