@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="pl" suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -24,6 +24,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 if (shouldBeDark) {
                   document.documentElement.classList.add('dark');
                 }
+                const language = localStorage.getItem('language') || 'pl';
+                document.documentElement.lang = language;
               } catch (e) {}
             `,
           }}
