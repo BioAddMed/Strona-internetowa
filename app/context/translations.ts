@@ -99,7 +99,7 @@ export const translations = {
     partners: {
       title: 'Nasi Partnerzy',
       subtitle: 'Firmy i instytucje wspierające nasze projekty.',
-      becomeSponsorsButton: 'Zostań sponsorem',
+      becomeSponsorsButton: 'Zostań Partnerem',
       website: 'Strona internetowa',
       contact: 'Kontakt',
       sponsorOffer: {
