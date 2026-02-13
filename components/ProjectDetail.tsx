@@ -1,6 +1,8 @@
 "use client"
 import { useEffect, useState } from 'react'
 import ImageCarousel from '@/components/ImageCarousel'
+import { useLanguage } from '@/app/context/LanguageContext'
+import { translations } from '@/app/context/translations'
 import type { ProjectDetail as ProjectDetailType } from '@/app/context/data'
 
 type Props = {
@@ -9,6 +11,8 @@ type Props = {
 }
 
 export default function ProjectDetail({ project, children }: Props) {
+  const { language } = useLanguage()
+  const t = translations[language]
   const [images, setImages] = useState<string[]>([])
   
   useEffect(() => {
@@ -30,7 +34,7 @@ export default function ProjectDetail({ project, children }: Props) {
     <div className="flex flex-col space-y-4">
       <h2 className="text-xl font-bold flex-1">{project.title}</h2>
       <p className="text-sm text-slate-600 dark:text-slate-300">
-        <span className="font-medium">Koordynator:</span> {project.coordinator}
+        <span className="font-medium">{t.projects.coordinator}:</span> {project.coordinator}
       </p>
       <div className="grid">
         {images.length > 0 ? (

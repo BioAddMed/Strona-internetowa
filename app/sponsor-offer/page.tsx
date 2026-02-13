@@ -1,21 +1,26 @@
-import Link from 'next/link'
+"use client"
 
+import Link from 'next/link'
+import { useLanguage } from '@/app/context/LanguageContext'
+import { translations } from '@/app/context/translations'
 export default function SponsorOfferPage() {
+  const { language } = useLanguage()
+  const t = translations[language]
   return (
     <div className="space-y-10">
       <header className="text-center">
         <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-          Oferta sponsorska
+          {t.partnerOffer.title}
         </h1>
         <p className="mt-3 text-slate-600 dark:text-slate-300">
-          Wspieraj rozwój innowacyjnych projektów biomedycznych i wspólnie z nami buduj przyszłość technologii medycznych.
+          {t.partnerOffer.description}
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <Link
             href="/contact"
             className="inline-flex items-center rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-700"
           >
-            Skontaktuj się z nami
+            {t.partnerOffer.contactButton}
           </Link>
           <a
             href="mailto:bioaddmed@pwr.edu.pl"
@@ -28,32 +33,32 @@ export default function SponsorOfferPage() {
 
       <section className="grid gap-6 md:grid-cols-2">
         <div className="rounded-2xl border border-slate-200 dark:border-slate-700 p-6 bg-white dark:bg-slate-900">
-          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Dlaczego warto?</h2>
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">{t.partnerOffer.whySection.title}</h2>
           <ul className="mt-4 space-y-2 text-slate-600 dark:text-slate-300">
-            <li>• Realny wpływ na rozwój innowacyjnych technologii medycznych.</li>
-            <li>• Widoczność marki wśród studentów, naukowców i partnerów uczelni.</li>
-            <li>• Dostęp do młodych talentów i projektów badawczo-rozwojowych.</li>
+            {t.partnerOffer.whySection.points.map((point, index) => (
+              <li key={index}>• {point}</li>
+            ))}
           </ul>
         </div>
 
         <div className="rounded-2xl border border-slate-200 dark:border-slate-700 p-6 bg-white dark:bg-slate-900">
-          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Formy współpracy</h2>
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">{t.partnerOffer.colabOptionsSection.title}</h2>
           <ul className="mt-4 space-y-2 text-slate-600 dark:text-slate-300">
-            <li>• Wsparcie finansowe projektów i prototypów.</li>
-            <li>• Współpraca merytoryczna i konsultacje eksperckie.</li>
-            <li>• Udostępnienie sprzętu, materiałów lub oprogramowania.</li>
+            {t.partnerOffer.colabOptionsSection.points.map((point, index) => (
+              <li key={index}>• {point}</li>
+            ))}
           </ul>
         </div>
       </section>
 
       <section className="rounded-2xl border border-slate-200 dark:border-slate-700 p-6 bg-slate-50 dark:bg-slate-900">
-        <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Jak zostać sponsorem?</h2>
+        <h2 className="text-xl font-semibold text-slate-900 dark:text-white">{t.partnerOffer.howToBecomeSection.title}</h2>
         <p className="mt-3 text-slate-600 dark:text-slate-300">
-          Opowiedz nam o swoich celach, a przygotujemy dopasowaną propozycję współpracy i ekspozycji marki. Możemy też przygotować spersonalizowany pakiet świadczeń.
+          {t.partnerOffer.howToBecomeSection.description}
         </p>
         <div className="mt-4">
           <Link href="/sponsors" className="text-brand-600 dark:text-brand-400 hover:underline">
-            Zobacz naszych partnerów
+            {t.partnerOffer.howToBecomeSection.seePartnersButton}
           </Link>
         </div>
       </section>

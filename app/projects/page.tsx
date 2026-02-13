@@ -67,7 +67,7 @@ export default function ProjectsPage() {
           onSelect={setSelectedProject}
         />
 
-        <div className="flex-1 min-h-[420px] rounded-2xl border border-slate-200 dark:border-slate-700 bg-linear-to-br from-white via-brand-50 to-accent-50 dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-900 p-6 overflow-auto">
+        <div className="flex-1 min-h-105 rounded-2xl border border-slate-200 dark:border-slate-700 bg-linear-to-br from-white via-brand-50 to-accent-50 dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-900 p-6 overflow-auto">
           {componentByName[selectedProject]}
         </div>
       </div>

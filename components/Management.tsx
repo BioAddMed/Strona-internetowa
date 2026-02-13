@@ -1,5 +1,7 @@
+"use client"
 // src/components/Management.tsx
-import { MANAGEMENT, type Member } from '@/app/context/data'
+import { getManagement, type Member } from '@/app/context/data'
+import { useLanguage } from '@/app/context/LanguageContext'
 
 function Card({ name, role, imageUrl }: Member) {
   return (
@@ -18,6 +20,9 @@ function Card({ name, role, imageUrl }: Member) {
 }
 
 export default function Management() {
+  const { language } = useLanguage()
+  const MANAGEMENT = getManagement(language)
+  
   // Split management into president (first) and vice presidents (rest)
   const president = MANAGEMENT[0]
   const vicePresidents = MANAGEMENT.slice(1)

@@ -1,7 +1,12 @@
+"use client"
 // src/components/CTA.tsx
-import { CTA as CTA_CONTENT } from '@/app/context/data'
+import { getCTA } from '@/app/context/data'
+import { useLanguage } from '@/app/context/LanguageContext'
 
 export default function CTA() {
+  const { language } = useLanguage()
+  const CTA_CONTENT = getCTA(language)
+  
   return (
     <section className="bg-linear-to-r from-brand-50 to-white dark:from-brand-900 dark:to-slate-800 rounded-2xl p-8 transition-colors">
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
