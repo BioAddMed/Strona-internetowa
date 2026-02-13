@@ -1,16 +1,7 @@
+"use client"
 // src/components/Management.tsx
-type Member = { name: string; role: string; imageUrl?: string }
-
-const MANAGEMENT: Member[] = [
-  { name: 'Kamila Saferna', role: 'Przewodniczący', imageUrl: '/images/management/kamila_saferna.jpeg' },
-  { name: 'Gabriel Pankowski', role: 'Wiceprzewodniczący', imageUrl: '/images/management/gabriel_pankowski.jpg' },
-  { name: 'Hubert Sowa', role: 'Wiceprzewodniczący', imageUrl: '/images/management/hubert_sowa.jpg' }
-]
-
-const COORDINATORS: Member[] = [
-  { name: 'Mateusz Witkowski', role: 'Koordynator Działu Promocji' },
-  { name: 'Jakub Gruszka', role: 'Koordynator Działu IT' }
-]
+import { getManagement, type Member } from '@/app/context/data'
+import { useLanguage } from '@/app/context/LanguageContext'
 
 function Card({ name, role, imageUrl }: Member) {
   return (
@@ -29,19 +20,27 @@ function Card({ name, role, imageUrl }: Member) {
 }
 
 export default function Management() {
-  return (
-    <div className="space-y-10">
-      <section aria-labelledby="board-title">
-        <h2 id="board-title" className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Zarząd</h2>
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-          {MANAGEMENT.map(m => <Card key={m.name} {...m} />)}
-        </div>
-      </section>
+  const { language } = useLanguage()
+  const MANAGEMENT = getManagement(language)
+  
+  // Split management into president (first) and vice presidents (rest)
+  const president = MANAGEMENT[0]
+  const vicePresidents = MANAGEMENT.slice(1)
 
-      <section aria-labelledby="coord-title">
-        <h2 id="coord-title" className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Koordynatorzy działów</h2>
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-          {COORDINATORS.map(m => <Card key={m.name} {...m} />)}
+  return (
+    <div className="space-y-8">
+      <section aria-labelledby="board-title">
+        {/* Pyramid layout */}
+        <div className="flex flex-col items-center gap-6">
+          {/* President at top */}
+          <div className="w-full max-w-xs">
+            <Card {...president} />
+          </div>
+          
+          {/* Vice presidents below */}
+          <div className="grid gap-6 sm:grid-cols-2 w-full max-w-2xl">
+            {vicePresidents.map(m => <Card key={m.name} {...m} />)}
+          </div>
         </div>
       </section>
     </div>

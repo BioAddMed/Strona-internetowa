@@ -1,36 +1,42 @@
 "use client"
 // src/components/Hero.tsx
 import { motion } from 'framer-motion'
+import { HERO } from '@/app/context/data'
+import { useLanguage } from '@/app/context/LanguageContext'
+import { translations } from '@/app/context/translations'
 
 export default function Hero() {
+  const { language } = useLanguage()
+  const t = translations[language]
+  
   return (
     <section className="grid gap-8 md:grid-cols-2 items-center">
       <div>
         <motion.h1 initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.05 }} className="text-4xl md:text-5xl font-extrabold leading-tight text-slate-900 dark:text-white">
-          KN BioAddMed
+          {t.hero.title}
         </motion.h1>
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.12 }} className="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-prose">
-          Łączymy inżynierię z medycyną — projekty drukowane w 3D, prototypy medyczne, biofeedback i systemy wbudowane.
+          {t.hero.subtitle}
         </motion.p>
 
         <div className="mt-6 flex gap-3">
           <a href="/projects" className="inline-flex items-center gap-2 px-5 py-3 rounded border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-            Zobacz projekty
+            {t.hero.primaryCta}
           </a>
           <a href="/contact" className="inline-flex items-center gap-2 px-5 py-3 rounded border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-            Kontakt
+            {t.hero.secondaryCta}
           </a>
         </div>
 
-        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          <Stat label="Członków" value="49" />
-          <Stat label="Projekty" value="9" />
-          <Stat label="Współprace" value="8" />
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+          <Stat label={t.hero.stats.labels.members} value={t.hero.stats.members} />
+          <Stat label={t.hero.stats.labels.projects} value={t.hero.stats.projects} />
+          <Stat label={t.hero.stats.labels.partnerships} value={t.hero.stats.partnerships} />
         </div>
       </div>
 
       <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="relative rounded-xl overflow-hidden shadow-lg bg-linear-to-br from-brand-100 to-brand-50 dark:from-brand-900 dark:to-brand-800 aspect-3/2 flex items-center justify-center">
-        <img src="/images/bioaddmed_team.jpg" alt="Zespół KN BioAddMed" className="object-cover w-full h-full" />
+        <img src={HERO.heroImage.src} alt={t.hero.imageAlt} className="object-cover w-full h-full" />
       </motion.div>
     </section>
   )

@@ -1,33 +1,11 @@
 "use client"
-import { useEffect, useState } from 'react'
-import ImageCarousel from '@/components/ImageCarousel'
+import ProjectDetail from '@/components/ProjectDetail'
+import { getProjectDetails } from '@/app/context/data'
+import { useLanguage } from '@/app/context/LanguageContext'
 
 export default function Orteza() {
-    const [images, setImages] = useState<string[]>([])
-    useEffect(() => {
-        let mounted = true
-        fetch('/api/images?folder=projekty/Orteza')
-            .then(r => r.json())
-            .then(data => { if (mounted) setImages(data.images || []) })
-            .catch(() => { if (mounted) setImages([]) })
-        return () => { mounted = false }
-    }, [])
-
-    return (
-        <div className="flex flex-col space-y-4">
-            <h2 className="text-xl font-bold flex-1">Orteza</h2>
-            <div className="grid">
-                {images.length > 0 ? (
-                    <div className="p-4">
-                        <ImageCarousel images={images} />
-                    </div>
-                ) : (
-                    <img src="https://placehold.co/200x200" alt="Placeholder" className="rounded-lg m-10 mx-auto" />
-                )}
-                <p>
-                Orteza - projekt realizowany we współpracy z kołem naukowym Rapid Poopers specjalizującym się w druku oraz technologii przyrostowej. W ramach projektu realizowany jest model ortezy dla pacjentki powypadkowej mający zapewnić stabilizację części wolnej kończyny górnej obejmującej ramię, przedramię , nadgarstek oraz dłoń.
-                </p>
-            </div>
-        </div>
-    );
+  const { language } = useLanguage()
+  const project = getProjectDetails(language).find(p => p.id === 'orteza')
+  if (!project) return null
+  return <ProjectDetail project={project} />
 }

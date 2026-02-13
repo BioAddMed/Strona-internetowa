@@ -1,10 +1,7 @@
+"use client"
 // src/components/Stats.tsx
-const STATS = [
-  { value: '50', label: 'Członków koła', helper: 'Aktywni w kilku działach' },
-  { value: '7', label: 'Aktywnych projektów', helper: 'Od prototypów po wdrożenia' },
-  { value: '12', label: 'Warsztatów rocznie', helper: 'Druk 3D, elektronika, medtech' },
-  { value: '8', label: 'Partnerów', helper: 'Firmy i instytucje wspierające' }
-]
+import { getStats } from '@/app/context/data'
+import { useLanguage } from '@/app/context/LanguageContext'
 
 const LIGHT_BACKGROUNDS = [
   'from-accent-50 via-white to-brand-50',
@@ -14,6 +11,9 @@ const LIGHT_BACKGROUNDS = [
 ]
 
 export default function Stats() {
+  const { language } = useLanguage()
+  const STATS = getStats(language)
+  
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {STATS.map((stat, index) => (

@@ -1,50 +1,222 @@
-export const NEWS_ITEMS = [
-  { title: 'News 1', excerpt: 'Krótki opis wydarzenia, sukcesu lub ogłoszenia.' },
-  { title: 'News 2', excerpt: 'Aktualizacja projektu oraz udział w wydarzeniu.' },
-  { title: 'News 3', excerpt: 'Nabór do koła i spotkanie informacyjne.' },
-  { title: 'News 4', excerpt: 'Warsztaty z druku 3D i elektroniki.' },
-]
+import { translations, type Language } from './translations'
 
-export const PROJECTS = [
-  { title: 'Franek 2.0', tag: 'AI / Hardware', excerpt: 'Interaktywny model czaszki z oczami śledzącymi twarz — ML + Raspberry Pi.' },
-  { title: 'Orteza', tag: 'Biomechanics', excerpt: 'Orteza stabilizująca kończynę górną — prototypy i testy biomechaniczne.' },
-  { title: 'Robołapa', tag: 'Robotics', excerpt: 'Drukowana dłoń sterowana sygnałem EMG.' },
-  { title: 'EduGut', tag: 'Medical Trainer', excerpt: 'Trenażer chirurgiczny do zespolenia jelita — druk 3D.' },
-  { title: 'AERO', tag: 'Wearables', excerpt: 'System monitorowania oddechu z biofeedbackiem.' },
-  { title: 'Wege Druk', tag: 'FoodTech', excerpt: 'Badania nad strukturą produktów z białek roślinnych.' }
-]
+// ====================================
+// TypeScript Interfaces for Type Safety
+// ====================================
 
-export const DEPARTMENTS = [
-  { name: 'Dział Promocji', desc: 'Komunikacja, social media, współprace.' },
-  { name: 'Dział IT', desc: 'Elektronika, software, ML, integracje.' },
-  { name: 'Dział Modelowania', desc: 'Projektowanie CAD, druk 3D i post-processing.' }
-]
+export interface NewsItem {
+  title: string
+  excerpt: string
+}
 
-export const SPONSORS = [
-  {
-    name: 'ChitoMed',
-    description: 'Produkty medyczne na bazie chitozanu, które wspomagają gojenie ran i minimalizują ryzyko infekcji.',
-    website: ['https://cyberbone.eu/', 'https://www.linkedin.com/company/novaoss/'],
-    email: 'office@chitomed.com'
-  },
-  {
-    name: '3Dconnexion',
-    description: 'Program wspierania grup studenckich. Myszki 3D SpaceMouse i myszy CadMouse, które ułatwiają pracę z programami CAD.',
-    website: ['https://3dconnexion.com/pl/'],
-    email: null
-  },
-  {
-    name: '3D Center Polska',
-    description: 'Rozwiązania druku 3D dla przemysłu i medycyny.',
-    website: ['https://3dcenterpolska.pl/'],
-    email: 'contact@3dcenter.com.pl'
-  },
-  {
-    name: 'DPIN',
-    description: 'Warsztaty, szkolenia, druki 3D.',
-    website: ['https://dpin.pl/centrum-druku-3d/'],
-    email: 'sekretariat@dpin.pl'
+export interface Project {
+  title: string
+  tag: string
+  excerpt: string
+  coordinator: string
+  status: 'ongoing' | 'finished'
+}
+
+export interface Department {
+  name: string
+  desc: string
+  coordinator: string
+}
+
+export interface Sponsor {
+  name: string
+  description: string
+  website: string[]
+  email: string | null
+}
+
+export interface Member {
+  name: string
+  role: string
+  imageUrl?: string
+}
+
+export interface Stat {
+  value: string
+  label: string
+  helper: string
+}
+
+export interface HeroContent {
+  title: string
+  subtitle: string
+  primaryCta: {
+    text: string
+    href: string
   }
-]
+  secondaryCta: {
+    text: string
+    href: string
+  }
+  heroImage: {
+    src: string
+    alt: string
+  }
+  stats: {
+    members: string
+    projects: string
+    partnerships: string
+  }
+}
 
+export interface CTAContent {
+  title: string
+  description: string
+  primaryButton: {
+    text: string
+    href: string
+  }
+  secondaryButton: {
+    text: string
+    href: string
+  }
+}
 
+export interface ProjectDetail {
+  id: string
+  title: string
+  coordinator: string
+  description: string
+  imageFolder: string
+}
+
+// ====================================
+// Content Data - Language-aware getters
+// ====================================
+
+/**
+ * Get Hero content for the specified language
+ */
+export const getHero = (lang: Language = 'pl'): HeroContent => {
+  const t = translations[lang]
+  return {
+    title: t.hero.title,
+    subtitle: t.hero.subtitle,
+    primaryCta: {
+      text: t.hero.primaryCta,
+      href: '/projects'
+    },
+    secondaryCta: {
+      text: t.hero.secondaryCta,
+      href: '/contact'
+    },
+    heroImage: {
+      src: '/images/team/bioaddmed.jpg',
+      alt: t.hero.imageAlt
+    },
+    stats: {
+      members: t.hero.stats.members,
+      projects: t.hero.stats.projects,
+      partnerships: t.hero.stats.partnerships
+    }
+  }
+}
+
+/**
+ * Get CTA content for the specified language
+ */
+export const getCTA = (lang: Language = 'pl'): CTAContent => {
+  const t = translations[lang]
+  return {
+    title: t.cta.title,
+    description: t.cta.description,
+    primaryButton: {
+      text: t.cta.primaryButton,
+      href: '#contact'
+    },
+    secondaryButton: {
+      text: t.cta.secondaryButton,
+      href: '#'
+    }
+  }
+}
+
+/**
+ * Get Stats for the specified language
+ */
+export const getStats = (lang: Language = 'pl'): Stat[] => {
+  const t = translations[lang]
+  return [
+    { value: '50', label: t.stats.members, helper: t.stats.membersHelper },
+    { value: '7', label: t.stats.activeProjects, helper: t.stats.projectsHelper },
+    { value: '12', label: t.stats.workshops, helper: t.stats.workshopsHelper },
+    { value: '8', label: t.stats.partners, helper: t.stats.partnersHelper }
+  ]
+}
+
+/**
+ * Get Management members for the specified language
+ */
+export const getManagement = (lang: Language = 'pl'): Member[] => {
+  return translations[lang].data.management
+}
+
+/**
+ * Get Coordinators for the specified language
+ */
+export const getCoordinators = (lang: Language = 'pl'): Member[] => {
+  return translations[lang].data.coordinators
+}
+
+/**
+ * Get Team members for the specified language
+ */
+export const getTeam = (lang: Language = 'pl'): Member[] => {
+  return translations[lang].data.team
+}
+
+/**
+ * Get News Items for the specified language
+ */
+export const getNewsItems = (lang: Language = 'pl'): NewsItem[] => {
+  return translations[lang].data.newsItems
+}
+
+/**
+ * Get Projects for the specified language
+ */
+export const getProjects = (lang: Language = 'pl'): Project[] => {
+  return translations[lang].data.projects
+}
+
+/**
+ * Get Departments for the specified language
+ */
+export const getDepartments = (lang: Language = 'pl'): Department[] => {
+  return translations[lang].data.departments
+}
+
+/**
+ * Get Sponsors for the specified language
+ */
+export const getSponsors = (lang: Language = 'pl'): Sponsor[] => {
+  return translations[lang].data.sponsors
+}
+
+/**
+ * Get Project Details for the specified language
+ */
+export const getProjectDetails = (lang: Language = 'pl'): ProjectDetail[] => {
+  return translations[lang].data.projectDetails
+}
+
+// ====================================
+// Default exports for backwards compatibility
+// ====================================
+
+export const HERO = getHero('pl')
+export const CTA = getCTA('pl')
+export const STATS = getStats('pl')
+export const MANAGEMENT = getManagement('pl')
+export const COORDINATORS = getCoordinators('pl')
+export const TEAM = getTeam('pl')
+export const NEWS_ITEMS = getNewsItems('pl')
+export const PROJECTS = getProjects('pl')
+export const DEPARTMENTS = getDepartments('pl')
+export const SPONSORS = getSponsors('pl')
+export const PROJECT_DETAILS = getProjectDetails('pl')
