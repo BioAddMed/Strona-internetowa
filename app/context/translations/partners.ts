@@ -7,9 +7,9 @@ export const partnersTranslations = {
       website: 'Strona internetowa',
       contact: 'Kontakt',
       sponsorOffer: {
-        title: 'Oferta dla Sponsorów',
+        title: 'Oferta dla Partnerów',
         intro: 'Szukamy partnerów, którzy chcą wspierać innowacyjne projekty studentów w dziedzinie biotechnologii i inżynierii medycznej.',
-        benefits: 'Korzyści dla Sponsorów',
+        benefits: 'Korzyści dla Partnerów',
         benefitsList: [
           'Promocja marki wśród studentów i środowiska akademickiego',
           'Dostęp do innowacyjnych projektów i potencjalnych pracowników',
@@ -50,13 +50,13 @@ export const partnersTranslations = {
     partners: {
       title: 'Our Partners',
       subtitle: 'Companies and institutions supporting our projects.',
-      becomeSponsorsButton: 'Become a sponsor',
+      becomeSponsorsButton: 'Become a partner',
       website: 'Website',
       contact: 'Contact',
       sponsorOffer: {
-        title: 'Sponsor Offer',
+        title: 'Partner Offer',
         intro: 'We are looking for partners who want to support innovative student projects in biotechnology and medical engineering.',
-        benefits: 'Benefits for Sponsors',
+        benefits: 'Benefits for Partners',
         benefitsList: [
           'Brand promotion among students and the academic community',
           'Access to innovative projects and potential employees',
@@ -67,7 +67,7 @@ export const partnersTranslations = {
       }
     },
     partnerOffer: {
-      title: "Sponsor Offer",
+      title: "Partner Offer",
       description: "Support the development of innovative biomedical projects and build the future of medical technology with us.",
       contactButton: "Contact us",
       whySection: {
@@ -87,7 +87,7 @@ export const partnersTranslations = {
         ]
       },
       howToBecomeSection: {
-        title: "How to become a sponsor?",
+        title: "How to become a partner?",
         description: "Tell us about your goals, and we will prepare a tailored cooperation proposal and brand exposure. We can also prepare a personalized benefits package.",
         seePartnersButton: "See our partners"
       },
