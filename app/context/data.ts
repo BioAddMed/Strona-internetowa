@@ -171,13 +171,6 @@ export const getTeam = (lang: Language = 'pl'): Member[] => {
 }
 
 /**
- * Get News Items for the specified language
- */
-export const getNewsItems = (lang: Language = 'pl'): NewsItem[] => {
-  return translations[lang].data.newsItems
-}
-
-/**
  * Get Projects for the specified language
  */
 export const getProjects = (lang: Language = 'pl'): Project[] => {
@@ -215,7 +208,6 @@ export const STATS = getStats('pl')
 export const MANAGEMENT = getManagement('pl')
 export const COORDINATORS = getCoordinators('pl')
 export const TEAM = getTeam('pl')
-export const NEWS_ITEMS = getNewsItems('pl')
 export const PROJECTS = getProjects('pl')
 export const DEPARTMENTS = getDepartments('pl')
 export const SPONSORS = getSponsors('pl')
