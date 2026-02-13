@@ -1,9 +1,11 @@
 "use client"
 import ProjectDetail from '@/components/ProjectDetail'
-import { PROJECT_DETAILS } from '@/app/context/data'
+import { getProjectDetails } from '@/app/context/data'
+import { useLanguage } from '@/app/context/LanguageContext'
 
 export default function Orteza() {
-  const project = PROJECT_DETAILS.find(p => p.id === 'orteza')
+  const { language } = useLanguage()
+  const project = getProjectDetails(language).find(p => p.id === 'orteza')
   if (!project) return null
   return <ProjectDetail project={project} />
 }

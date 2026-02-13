@@ -1,5 +1,8 @@
+"use client"
 // src/components/Departments.tsx
-import { DEPARTMENTS } from '@/app/context/data'
+import { getDepartments } from '@/app/context/data'
+import { useLanguage } from '@/app/context/LanguageContext'
+import { translations } from '@/app/context/translations'
 
 const LIGHT_BACKGROUNDS = [
   'from-accent-50 via-white to-white',
@@ -8,7 +11,11 @@ const LIGHT_BACKGROUNDS = [
 ]
 
 export default function Departments({ limit }: { limit?: number }) {
+  const { language } = useLanguage()
+  const t = translations[language]
+  const DEPARTMENTS = getDepartments(language)
   const list = typeof limit === 'number' ? DEPARTMENTS.slice(0, limit) : DEPARTMENTS
+  
   return (
     <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
       {list.map((d, index) => (
@@ -20,7 +27,7 @@ export default function Departments({ limit }: { limit?: number }) {
           <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{d.desc}</p>
           {d.coordinator && (
             <p className="mt-3 text-sm font-medium text-slate-700 dark:text-slate-200">
-              Koordynator: {d.coordinator}
+              {t.departments.coordinatorLabel}: {d.coordinator}
             </p>
           )}
         </div>

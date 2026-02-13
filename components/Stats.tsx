@@ -1,5 +1,7 @@
+"use client"
 // src/components/Stats.tsx
-import { STATS } from '@/app/context/data'
+import { getStats } from '@/app/context/data'
+import { useLanguage } from '@/app/context/LanguageContext'
 
 const LIGHT_BACKGROUNDS = [
   'from-accent-50 via-white to-brand-50',
@@ -9,6 +11,9 @@ const LIGHT_BACKGROUNDS = [
 ]
 
 export default function Stats() {
+  const { language } = useLanguage()
+  const STATS = getStats(language)
+  
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {STATS.map((stat, index) => (

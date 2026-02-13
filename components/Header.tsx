@@ -175,7 +175,7 @@ export default function Header() {
             aria-label="Polski"
             title="Polski"
           >
-            <span className="text-xl">🇵🇱</span>
+            <span>PL</span>
           </button>
           <button
             onClick={() => setLanguage('en')}
@@ -187,7 +187,7 @@ export default function Header() {
             aria-label="English"
             title="English"
           >
-            <span className="text-xl">🇬🇧</span>
+            <span>EN</span>
           </button>
         </div>
 

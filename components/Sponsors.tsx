@@ -1,9 +1,15 @@
 'use client'
 
-import { SPONSORS } from '@/app/context/data'
+import { getSponsors } from '@/app/context/data'
+import { useLanguage } from '@/app/context/LanguageContext'
+import { translations } from '@/app/context/translations'
 import { Mail, Phone, Globe } from 'lucide-react'
 
 export default function Sponsors() {
+  const { language } = useLanguage()
+  const t = translations[language]
+  const SPONSORS = getSponsors(language)
+  
   return (
     <div className="grid gap-6 md:grid-cols-2">
       {SPONSORS.map((sponsor) => (
