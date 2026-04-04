@@ -4,7 +4,10 @@ import { useLanguage } from '@/app/context/LanguageContext'
 
 interface ProjectGroup {
   title: string
-  items: string[]
+  items: {
+    id: string
+    label: string
+  }[]
 }
 
 export default function ListaProjektow({
@@ -35,19 +38,19 @@ export default function ListaProjektow({
                 </h3>
               </div>
               <ul className="divide-y divide-slate-100 dark:divide-slate-700">
-                {group.items.map((name) => {
-                  const active = name === selectedProject
+                {group.items.map((item) => {
+                  const active = item.id === selectedProject
                   return (
-                    <li key={name}>
+                    <li key={item.id}>
                       <button
-                        onClick={() => onSelect(name)}
+                        onClick={() => onSelect(item.id)}
                         className={`w-full text-left px-5 py-3 transition-colors ${
                           active
                             ? 'bg-accent-50 text-slate-900 dark:bg-slate-700/50 dark:text-white'
                             : 'hover:bg-slate-50 dark:hover:bg-slate-700/30 text-slate-700 dark:text-slate-300'
                         }`}
                       >
-                        {name}
+                        {item.label}
                       </button>
                     </li>
                   )

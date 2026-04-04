@@ -83,6 +83,7 @@ export interface ProjectDetail {
   coordinator: string
   description: string
   imageFolder: string
+  status: 'ongoing' | 'finished'
 }
 
 // ====================================

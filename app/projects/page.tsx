@@ -13,42 +13,39 @@ import Kampus3D from '@/components/projekty/Kampus3D'
 import Aeros from '@/components/projekty/Aeros'
 import { useLanguage } from '@/app/context/LanguageContext'
 import { translations } from '@/app/context/translations'
+import { getProjectDetails } from '@/app/context/data'
 
-const PROJECT_DATA = [
-  { name: 'Franek 2.0', status: 'ongoing' },
-  { name: 'Bioreaktor', status: 'ongoing' },
-  { name: 'Orteza', status: 'ongoing' },
-  { name: 'Edugut', status: 'ongoing' },
-  { name: 'Aeros', status: 'ongoing' },
-  { name: 'Franek', status: 'finished' },
-  { name: 'Bioploter', status: 'finished' },
-  { name: 'Kampus 3D', status: 'finished' }
-]
+const DEFAULT_PROJECT_ID = getProjectDetails('pl').find((project) => project.status === 'ongoing')?.id ?? 'franek2'
 
 export default function ProjectsPage() {
   const { language } = useLanguage()
   const t = translations[language]
-  const [selectedProject, setSelectedProject] = useState<string>('Franek 2.0')
+  const projectDetails = useMemo(() => getProjectDetails(language), [language])
+  const [selectedProject, setSelectedProject] = useState<string>(DEFAULT_PROJECT_ID)
 
   const projectGroups = useMemo(() => {
-    const ongoing = PROJECT_DATA.filter(p => p.status === 'ongoing').map(p => p.name)
-    const finished = PROJECT_DATA.filter(p => p.status === 'finished').map(p => p.name)
+    const ongoing = projectDetails
+      .filter((project) => project.status === 'ongoing')
+      .map((project) => ({ id: project.id, label: project.title }))
+    const finished = projectDetails
+      .filter((project) => project.status === 'finished')
+      .map((project) => ({ id: project.id, label: project.title }))
     
     return [
-      { title: language === 'pl' ? 'Projekty trwające' : 'Ongoing Projects', items: ongoing },
-      { title: language === 'pl' ? 'Projekty skończone' : 'Finished Projects', items: finished }
+      { title: t.projects.ongoing, items: ongoing },
+      { title: t.projects.finished, items: finished }
     ]
-  }, [language])
+  }, [projectDetails, t.projects.finished, t.projects.ongoing])
 
-  const componentByName: Record<string, JSX.Element> = {
-    'Franek 2.0': <Franek2 />,
-    'Bioreaktor': <Bioreaktor />,
-    'Orteza': <Orteza />,
-    'Franek': <Franek />,
-    'Bioploter': <Bioploter />,
-    'Edugut': <Edugut />,
-    'Kampus 3D': <Kampus3D />,
-    'Aeros': <Aeros />
+  const componentById: Record<string, JSX.Element> = {
+    franek2: <Franek2 />,
+    bioreaktor: <Bioreaktor />,
+    orteza: <Orteza />,
+    franek: <Franek />,
+    bioploter: <Bioploter />,
+    edugut: <Edugut />,
+    kampus3d: <Kampus3D />,
+    aeros: <Aeros />
   }
 
   return (
@@ -68,7 +65,7 @@ export default function ProjectsPage() {
         />
 
         <div className="flex-1 min-h-105 rounded-2xl border border-slate-200 dark:border-slate-700 bg-linear-to-br from-white via-brand-50 to-accent-50 dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-900 p-6 overflow-auto">
-          {componentByName[selectedProject]}
+          {componentById[selectedProject] ?? componentById[DEFAULT_PROJECT_ID]}
         </div>
       </div>
     </div>

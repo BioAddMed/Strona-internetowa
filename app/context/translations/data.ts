@@ -1,3 +1,18 @@
+const projectStatusById = {
+  franek: 'finished',
+  franek2: 'finished',
+  orteza: 'ongoing',
+  edugut: 'ongoing',
+  bioploter: 'finished',
+  aeros: 'ongoing',
+  kampus3d: 'finished',
+  bioreaktor: 'ongoing',
+  robolapa: 'finished',
+  wegedruk: 'finished',
+  robothand: 'finished',
+  vegeprint: 'finished'
+} as const
+
 export const dataTranslations = {
   pl: {
     projects: [
@@ -6,42 +21,42 @@ export const dataTranslations = {
         tag: 'AI / Hardware', 
         excerpt: 'Interaktywny model czaszki z oczami śledzącymi twarz — ML + Raspberry Pi.', 
         coordinator: 'Michał Szymczak', 
-        status: 'ongoing' as const
+        status: projectStatusById.franek2
       },
       { 
         title: 'Orteza', 
         tag: 'Biomechanics', 
         excerpt: 'Orteza stabilizująca kończynę górną — prototypy i testy biomechaniczne.', 
         coordinator: 'Sonia Klar', 
-        status: 'ongoing' as const
+        status: projectStatusById.orteza
       },
       { 
         title: 'Robołapa', 
         tag: 'Robotics', 
         excerpt: 'Drukowana dłoń sterowana sygnałem EMG.', 
         coordinator: '', 
-        status: 'finished' as const
+        status: projectStatusById.robolapa
       },
       { 
         title: 'EduGut', 
         tag: 'Medical Trainer', 
         excerpt: 'Trenażer chirurgiczny do zespolenia jelita — druk 3D.', 
         coordinator: 'Kasia Majka', 
-        status: 'ongoing' as const
+        status: projectStatusById.edugut
       },
       { 
         title: 'AERO', 
         tag: 'Wearables', 
         excerpt: 'System monitorowania oddechu z biofeedbackiem.', 
         coordinator: 'Nikodem Jacheć', 
-        status: 'ongoing' as const
+        status: projectStatusById.aeros
       },
       { 
         title: 'Wege Druk', 
         tag: 'FoodTech', 
         excerpt: 'Badania nad strukturą produktów z białek roślinnych.', 
         coordinator: '', 
-        status: 'finished' as const
+        status: projectStatusById.wegedruk
       }
     ],
     projectDetails: [
@@ -50,56 +65,64 @@ export const dataTranslations = {
         title: 'Franek',
         coordinator: 'Marta Cieślak',
         description: '',
-        imageFolder: 'projekty/Franek'
+        imageFolder: 'projekty/Franek',
+        status: projectStatusById.franek
       },
       {
         id: 'franek2',
         title: 'Franek 2.0',
         coordinator: 'Michał Szymczak',
         description: 'Franek 2.0 to projekt, który zakłada rozbudowę istniejącego modelu anatomicznego czaszki o interaktywne elementy elektroniczne. Aktualnie system obejmuje oczy wyposażone w kamerę, które wykorzystują techniki uczenia maszynowego do wykrywania oraz śledzenia twarzy osób w polu widzenia. Projekt opiera się na wykorzystaniu Raspberry Pi do przetwarzania obrazu oraz integracji nowoczesnych technologii informatycznych z modelami anatomicznymi.',
-        imageFolder: 'projekty/Franek20'
+        imageFolder: 'projekty/Franek20',
+        status: projectStatusById.franek2
       },
       {
         id: 'orteza',
         title: 'Orteza',
         coordinator: 'Sonia Klar',
         description: 'Orteza - projekt realizowany we współpracy z kołem naukowym Rapid Poopers specjalizującym się w druku oraz technologii przyrostowej. W ramach projektu realizowany jest model ortezy dla pacjentki powypadkowej mający zapewnić stabilizację części wolnej kończyny górnej obejmującej ramię, przedramię, nadgarstek oraz dłoń.',
-        imageFolder: 'projekty/Orteza'
+        imageFolder: 'projekty/Orteza',
+        status: projectStatusById.orteza
       },
       {
         id: 'edugut',
         title: 'EduGut',
         coordinator: 'Kasia Majka',
         description: 'Projekt „Edugut" jest realizowany we współpracy z KN „NEXUM" na Wydziale Medycznym. Celem projektu jest zaprojektowanie i wykonanie modelu treningowego do zespolenia jelita cienkiego, który jak najlepiej odzwierciedla budowę anatomiczną jelita grubego oraz jego właściwości mechaniczne. Kluczowym aspektem jest wydajność i opłacalność techniki wykonania, dlatego w procesie tym wykorzystujemy druk 3D.',
-        imageFolder: 'projekty/Edugut'
+        imageFolder: 'projekty/Edugut',
+        status: projectStatusById.edugut
       },
       {
         id: 'bioploter',
         title: 'Bioploter',
         coordinator: '',
         description: 'Celem projektu Bioplaster/druk tkanek jest analizowanie dostępnych biomateriałów, znalezienie i wdrożenie innowacyjnych aplikacji technologii przyrostowych (w tym zbudowanie bioplotera) do produkcji funkcjonalnych tkanek t.j. wypełnienia kostne czy włókna mięśniowe. Aktualnie we współpracy z KN Rapid Troopers pod opieką Pani Profesor Ziółkowskiej-Szymczyk oraz Dr. Wallisa analizujemy dostępną literaturę naukową dotyczącą używanych biomateriałów i urządzeń, poszukując problemów, które obecnie naukowcy napotykają w drodze do osiągnięcia w/w celu i próbujemy znaleźć ich rozwiązania.',
-        imageFolder: 'projekty/Bioploter'
+        imageFolder: 'projekty/Bioploter',
+        status: projectStatusById.bioploter
       },
       {
         id: 'aeros',
         title: 'AERO',
         coordinator: 'Nikodem Jacheć',
         description: 'AERO to system monitorowania oddechu z funkcją biofeedback. Projekt łączy technologie wearables z analizą danych medycznych w czasie rzeczywistym.',
-        imageFolder: 'projekty/Aeros'
+        imageFolder: 'projekty/Aeros',
+        status: projectStatusById.aeros
       },
       {
         id: 'kampus3d',
         title: 'Kampus 3D',
         coordinator: 'Jakub Gruszka',
         description: 'Kampus3D to projekt, w ramach którego tworzymy trójwymiarową mapę głównego kampusu Politechniki Wrocławskiej przy użyciu technologii druku 3D. Każdy budynek jest odwzorowywany na podstawie zdjęć i map 3D, a następnie drukowany i umieszczany na specjalnie przygotowanej makiecie. Po ukończeniu projektu makieta będzie wykorzystywana jako element promocyjny Koła Naukowego oraz Politechniki Wrocławskiej, prezentując kampus w innowacyjny i nowoczesny sposób.',
-        imageFolder: 'projekty/Kampus3D'
+        imageFolder: 'projekty/Kampus3D',
+        status: projectStatusById.kampus3d
       },
       {
         id: 'bioreaktor',
         title: 'Bioreaktor',
         coordinator: '',
         description: '„Bioreaktor" to projekt współrealizowany z kołem naukowym z Uniwersytetu Przyrodniczego we Wrocławiu „Biosus". Nasze koło zajmuje się w nim projektowaniem za pomocą programu Inventor/ Autocad/ Fusion360 i drukowaniem elementów wchodzących w skład statywu, mechanizmu działania i zabezpieczeń do urządzenia, które umożliwić ma nieustanny przepływ płynów i prowadzenie procesów mikrobiologicznych, enzymatycznych i hodowli komórek.',
-        imageFolder: 'projekty/Bioreaktor'
+        imageFolder: 'projekty/Bioreaktor',
+        status: projectStatusById.bioreaktor
       }
     ],
     departments: [
@@ -170,42 +193,42 @@ export const dataTranslations = {
         tag: 'AI / Hardware', 
         excerpt: 'Interactive skull model with face-tracking eyes — ML + Raspberry Pi.', 
         coordinator: 'Michał Szymczak', 
-        status: 'ongoing' as const
+        status: projectStatusById.franek2
       },
       { 
         title: 'Orthosis', 
         tag: 'Biomechanics', 
         excerpt: 'Upper limb stabilizing orthosis — prototypes and biomechanical tests.', 
         coordinator: 'Sonia Klar', 
-        status: 'ongoing' as const
+        status: projectStatusById.orteza
       },
       { 
         title: 'Robot Hand', 
         tag: 'Robotics', 
         excerpt: 'Printed hand controlled by EMG signal.', 
         coordinator: '', 
-        status: 'finished' as const
+        status: projectStatusById.robothand
       },
       { 
         title: 'EduGut', 
         tag: 'Medical Trainer', 
         excerpt: 'Surgical trainer for intestinal anastomosis — 3D printing.', 
         coordinator: 'Kasia Majka', 
-        status: 'ongoing' as const
+        status: projectStatusById.edugut
       },
       { 
         title: 'AERO', 
         tag: 'Wearables', 
         excerpt: 'Breathing monitoring system with biofeedback.', 
         coordinator: 'Nikodem Jacheć', 
-        status: 'ongoing' as const
+        status: projectStatusById.aeros
       },
       { 
         title: 'Vege Print', 
         tag: 'FoodTech', 
         excerpt: 'Research on the structure of plant protein products.', 
         coordinator: 'TBD', 
-        status: 'finished' as const
+        status: projectStatusById.vegeprint
       }
     ],
     projectDetails: [
@@ -214,56 +237,64 @@ export const dataTranslations = {
         title: 'Franek',
         coordinator: 'Marta Cieślak',
         description: '',
-        imageFolder: 'projekty/Franek'
+        imageFolder: 'projekty/Franek',
+        status: projectStatusById.franek
       },
       {
         id: 'franek2',
         title: 'Franek 2.0',
         coordinator: 'Michał Szymczak',
         description: 'Franek 2.0 is a project that involves expanding an existing anatomical skull model with interactive electronic elements. Currently, the system includes eyes equipped with a camera that use machine learning techniques to detect and track faces of people in the field of view. The project is based on using Raspberry Pi for image processing and integration of modern information technologies with anatomical models.',
-        imageFolder: 'projekty/Franek20'
+        imageFolder: 'projekty/Franek20',
+        status: projectStatusById.franek2
       },
       {
         id: 'orteza',
         title: 'Orthosis',
         coordinator: 'Sonia Klar',
         description: 'Orthosis - a project carried out in cooperation with the Rapid Poopers scientific club specializing in 3D printing and additive technology. As part of the project, an orthosis model is being developed for a post-accident patient to provide stabilization of the upper limb free part including the arm, forearm, wrist and hand.',
-        imageFolder: 'projekty/Orteza'
+        imageFolder: 'projekty/Orteza',
+        status: projectStatusById.orteza
       },
       {
         id: 'edugut',
         title: 'EduGut',
         coordinator: 'Kasia Majka',
         description: 'The "Edugut" project is carried out in cooperation with the "NEXUM" scientific club at the Faculty of Medicine. The goal of the project is to design and create a training model for small intestine anastomosis that best reflects the anatomical structure of the large intestine and its mechanical properties. A key aspect is the efficiency and profitability of the production technique, which is why we use 3D printing in this process.',
-        imageFolder: 'projekty/Edugut'
+        imageFolder: 'projekty/Edugut',
+        status: projectStatusById.edugut
       },
       {
         id: 'bioploter',
         title: 'Bioploter',
         coordinator: '',
         description: 'The goal of the Bioplaster/tissue printing project is to analyze available biomaterials, find and implement innovative applications of additive technologies (including building a bioplotter) for the production of functional tissues such as bone fillings or muscle fibers. Currently, in cooperation with the Rapid Troopers scientific club under the supervision of Professor Ziółkowska-Szymczyk and Dr. Wallis, we are analyzing available scientific literature on biomaterials and devices used, looking for problems that scientists currently encounter on the way to achieving the above goal and trying to find solutions.',
-        imageFolder: 'projekty/Bioploter'
+        imageFolder: 'projekty/Bioploter',
+        status: projectStatusById.bioploter
       },
       {
         id: 'aeros',
         title: 'AERO',
         coordinator: 'Nikodem Jacheć',
         description: 'AERO is a breathing monitoring system with biofeedback functionality. The project combines wearable technologies with real-time medical data analysis.',
-        imageFolder: 'projekty/Aeros'
+        imageFolder: 'projekty/Aeros',
+        status: projectStatusById.aeros
       },
       {
         id: 'kampus3d',
         title: 'Campus 3D',
         coordinator: 'Jakub Gruszka',
         description: 'Campus3D is a project in which we create a three-dimensional map of the main campus of Wrocław University of Science and Technology using 3D printing technology. Each building is reproduced based on photos and 3D maps, then printed and placed on a specially prepared model. After the project is completed, the model will be used as a promotional element of the Scientific Club and Wrocław University of Science and Technology, presenting the campus in an innovative and modern way.',
-        imageFolder: 'projekty/Kampus3D'
+        imageFolder: 'projekty/Kampus3D',
+        status: projectStatusById.kampus3d
       },
       {
         id: 'bioreaktor',
         title: 'Bioreactor',
         coordinator: '',
         description: '"Bioreactor" is a project co-implemented with the "Biosus" scientific club from the University of Life Sciences in Wrocław. Our club is involved in designing using Inventor/Autocad/Fusion360 and printing elements that are part of the stand, operating mechanism and safety features for a device that will enable continuous fluid flow and conducting microbiological, enzymatic and cell culture processes.',
-        imageFolder: 'projekty/Bioreaktor'
+        imageFolder: 'projekty/Bioreaktor',
+        status: projectStatusById.bioreaktor
       }
     ],
     departments: [
